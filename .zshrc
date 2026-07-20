@@ -85,6 +85,7 @@ plugins=(
     tmux
     zsh-autosuggestions
     zsh-syntax-highlighting
+    zsh-npm-scripts-autocomplete
     zsh-vi-mode
     )
 
