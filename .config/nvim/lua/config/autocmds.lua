@@ -8,13 +8,13 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
 -- Enter insert mode on BufEnter when running inside VSCode
-if vim.g.vscode then
-  vim.api.nvim_create_autocmd("BufEnter", {
-    callback = function()
-      vim.cmd("startinsert")
-    end,
-  })
-end
+-- if vim.g.vscode then
+--   vim.api.nvim_create_autocmd("BufEnter", {
+--     callback = function()
+--       vim.cmd("startinsert")
+--     end,
+--   })
+-- end
 
 -- Disable diagnostics for .env files
 vim.api.nvim_create_autocmd("BufEnter", {

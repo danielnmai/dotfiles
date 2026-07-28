@@ -97,3 +97,33 @@ map("n", "zC", "editor.foldRecursively")
 map("n", "zo", "editor.unfold")
 map("n", "zO", "editor.unfoldRecursively")
 map("n", "za", "editor.toggleFold")
+
+-- code navigation
+-- nvim 0.11 ships default LSP maps under the `gr` prefix (grr/grn/gra/gri).
+-- No neovim LSP attaches in vscode mode, and they'd make a bare `gr` wait for
+-- timeoutlen, so drop them and hand the prefix to vscode's navigation.
+for _, lhs in ipairs({ "grr", "grn", "gra", "gri", "grt" }) do
+  pcall(vim.keymap.del, "n", lhs)
+end
+
+keymap("n", "gr", function()
+  vscode.action("editor.action.goToReferences")
+end, opts)
+
+keymap("n", "gR", function()
+  vscode.action("references-view.findReferences")
+end, opts)
+
+keymap("n", "gI", function()
+  vscode.action("editor.action.goToImplementation")
+end, opts)
+
+keymap("n", "gy", function()
+  vscode.action("editor.action.goToTypeDefinition")
+end, opts)
+
+-- note: not <leader>rn -- config/keymaps.lua loads on VeryLazy (after this file)
+-- and binds that to :set rnu!, which would clobber anything set here.
+keymap("n", "<leader>cr", function()
+  vscode.action("editor.action.rename")
+end, opts)

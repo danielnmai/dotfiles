@@ -47,15 +47,15 @@ Custom keybindings for the VSCode Neovim extension. Leader key is `<Space>`.
 | `<leader>ha` | n, v | Add current editor to harpoon |
 | `<leader>ho` | n, v | Open harpoon quick pick |
 | `<leader>he` | n, v | Edit harpoon editors list |
-| `<leader>h1` | n, v | Go to harpoon editor 1 |
-| `<leader>h2` | n, v | Go to harpoon editor 2 |
-| `<leader>h3` | n, v | Go to harpoon editor 3 |
-| `<leader>h4` | n, v | Go to harpoon editor 4 |
-| `<leader>h5` | n, v | Go to harpoon editor 5 |
-| `<leader>h6` | n, v | Go to harpoon editor 6 |
-| `<leader>h7` | n, v | Go to harpoon editor 7 |
-| `<leader>h8` | n, v | Go to harpoon editor 8 |
-| `<leader>h9` | n, v | Go to harpoon editor 9 |
+| `<leader>1` | n, v | Go to harpoon editor 1 |
+| `<leader>2` | n, v | Go to harpoon editor 2 |
+| `<leader>3` | n, v | Go to harpoon editor 3 |
+| `<leader>4` | n, v | Go to harpoon editor 4 |
+| `<leader>5` | n, v | Go to harpoon editor 5 |
+| `<leader>6` | n, v | Go to harpoon editor 6 |
+| `<leader>7` | n, v | Go to harpoon editor 7 |
+| `<leader>8` | n, v | Go to harpoon editor 8 |
+| `<leader>9` | n, v | Go to harpoon editor 9 |
 
 ## Project Manager
 
@@ -76,3 +76,21 @@ Custom keybindings for the VSCode Neovim extension. Leader key is `<Space>`.
 | `zo` | n | Unfold |
 | `zO` | n | Unfold recursively |
 | `za` | n | Toggle fold |
+
+## Code Navigation
+
+| Keymap | Mode | Action |
+|--------|------|--------|
+| `gr` | n | Go to references (peek widget) |
+| `gR` | n | Find all references (sidebar list) |
+| `gI` | n | Go to implementation |
+| `gy` | n | Go to type definition |
+| `<leader>cr` | n | Rename symbol |
+
+`gd` (go to definition), `gD` (peek definition), `gh` (hover) and `gO` (document
+symbols) come from vscode-neovim's own defaults and are not remapped here.
+
+Neovim 0.11 ships default LSP mappings under the `gr` prefix (`grr`, `grn`,
+`gra`, `gri`, `grt`). No Neovim LSP attaches in VSCode mode, and leaving them in
+place would make a bare `gr` wait out `timeoutlen`, so they are deleted before
+`gr` is bound.
