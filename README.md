@@ -197,3 +197,4 @@ Then open `nvim` — LazyVim will automatically install its plugins on first lau
 ### 13. Import Rectangle config (macOS only)
 
 Install Rectangle, then use **Preferences → Import** to load `~/RectangleConfig.json`.
+
