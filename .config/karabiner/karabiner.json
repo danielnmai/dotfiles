@@ -612,7 +612,7 @@
                         ]
                     },
                     {
-                        "description": "CAPS LOCK + B -> Open Browser (Chromium)",
+                        "description": "CAPS LOCK + B -> Open Browser (Brave)",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -626,7 +626,7 @@
                                     "key_code": "b",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open '/Applications/Chromium.app'" }],
+                                "to": [{ "shell_command": "open '/Applications/Brave Browser.app'" }],
                                 "type": "basic"
                             }
                         ]

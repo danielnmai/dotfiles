@@ -122,6 +122,33 @@ keymap("n", "gy", function()
   vscode.action("editor.action.goToTypeDefinition")
 end, opts)
 
+-- git hunks: same ]h/[h that LazyVim's gitsigns uses in terminal nvim
+-- (gitsigns isn't loaded in vscode mode, so vscode's own navigation stands in).
+keymap("n", "]h", function()
+  vscode.action("workbench.action.editor.nextChange")
+end, opts)
+
+keymap("n", "[h", function()
+  vscode.action("workbench.action.editor.previousChange")
+end, opts)
+
+-- diagnostics: LazyVim binds ]d/[d/]e/[e to vim.diagnostic.jump on VeryLazy
+-- (after this file), which finds nothing in vscode mode, so rebind them once
+-- its defaults are in. vscode has no error-only jump, so ]e/[e match ]d/[d.
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LazyVimKeymapsDefaults",
+  callback = function()
+    for _, key in ipairs({ "d", "e" }) do
+      keymap("n", "]" .. key, function()
+        vscode.action("editor.action.marker.next")
+      end, opts)
+      keymap("n", "[" .. key, function()
+        vscode.action("editor.action.marker.prev")
+      end, opts)
+    end
+  end,
+})
+
 -- note: not <leader>rn -- config/keymaps.lua loads on VeryLazy (after this file)
 -- and binds that to :set rnu!, which would clobber anything set here.
 keymap("n", "<leader>cr", function()
